@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> alae maghchich Portfolio</title>
+  <meta name="description" content="Full-stack developer crafting immersive digital experiences" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <!-- Portfolio scripts -->
+  <script src="three-scene.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+  <!-- ── THREE.JS CANVAS ──────────────────────────────────────── -->
+  <canvas id="galaxy-canvas"></canvas>
+
+  <!-- ── CUSTOM CURSOR ─────────────────────────────────────────── -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ── NAVIGATION ────────────────────────────────────────────── -->
+  <nav id="main-nav" role="navigation" aria-label="Main navigation">
+    <img src="img/IMG_20260428_194711_703.png" alt="maghchich" href="#hero" class="nav-logo">
+
+    <ul class="nav-links" role="list">
+      <li><a href="#about"      class="nav-link">About</a></li>
+      <li><a href="#skills"     class="nav-link">Skills</a></li>
+      <li><a href="#background" class="nav-link">Journey</a></li>
+      <li><a href="#projects"   class="nav-link">Projects</a></li>
+      <li><a href="#contact"    class="nav-link">Contact</a></li>
+    </ul>
+
+    <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <nav id="mobile-nav" aria-label="Mobile navigation">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#background">Journey</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────────────────────────── -->
+  <section id="hero">
+    <p class="hero-eyebrow">✦ Web Developer &amp; Digital Creator</p>
+
+    <div class="hero-orb-wrap">
+      <img src="img/636ea2e3a8142824447ccafb_planet 1.svg" height="250px">
+    </div>
+
+    <h1 class="hero-name">
+      <span>alae</span>maghchich
+    </h1>
+
+    <p class="hero-title">Developer · Designer · Builder</p>
+
+    <div class="hero-typing" aria-live="polite">
+      <span id="typing-text"></span>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">Explore Work</a>
+      <a href="#contact"  class="btn btn-ghost">Get In Touch</a>
+    </div>
+
+
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div>
+          <p class="section-label reveal">Who I Am</p>
+          <h2 class="section-title reveal reveal-delay-1">
+            Building at the edge<br>of art &amp; technology
+          </h2>
+          <div class="section-divider reveal reveal-delay-2"></div>
+
+          <div class="about-text">
+            <p class="reveal reveal-delay-2">
+              I'm a <strong>full-stack developer</strong> based in Morocco, obsessed with crafting
+              digital products that feel alive. I blend code and design to create
+              experiences that leave an impression — not just a footprint.
+            </p>
+            <p class="reveal reveal-delay-3">
+              From pixel-perfect interfaces to <strong>robust back-end architectures</strong>,
+              I move fluidly across the stack. My work lives at the intersection
+              of technical precision and creative vision.
+            </p>
+            <p class="reveal reveal-delay-4">
+              When I'm not writing code, I'm exploring the cosmos — both literally
+              and through the lens of <strong>interactive 3D</strong> and generative art.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-stats reveal reveal-delay-2">
+          <div class="stat-card">
+            <div class="stat-number">1+</div>
+            <div class="stat-label">Years of experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Projects completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">12+</div>
+            <div class="stat-label">Technologies mastered</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Passion for craft</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS STRIP ──────────────────────────────────────────── -->
+  <section id="skills">
+    <div class="skills-header">
+      <p class="section-label reveal">Arsenal</p>
+      <h2 class="section-title reveal reveal-delay-1">Tools &amp; Technologies</h2>
+    </div>
+
+    <div class="skills-strip-wrap">
+      <div class="skills-runner">
+        <div class="skills-track" aria-label="Skills list">
+
+          <!-- Skill items — track is duplicated by JS for infinite loop -->
+          <div class="skill-item">
+            <img src="img/Html-1.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">HTML5</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/CSS3_logo.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">CSS3</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/Javascript_Logo.png" alt="" class="skill-icon">
+            <span class="skill-name">JavaScript</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/Tailwind_CSS_Logo.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">Tailwind</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/Bootstrap_logo.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">Bootstrap</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/Electron_Software_Framework_Logo.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">Electron.js</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/PHP-logo.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">PHP</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/Antu_mysql-workbench.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">MySQL</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/WordPress_blue_logo.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">WordPress</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/Figma-logo.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">Figma</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/Git_icon.svg.png" alt="" class="skill-icon">
+            <span class="skill-name">Git</span>
+          </div>
+          <div class="skill-item">
+            <img src="img/GitHub_Invertocat_Logo_invert.svg.png" alt="" srcset=""class="skill-icon">
+            <span class="skill-name">GitHub</span>
+          </div>
+
+          <!-- Second pass for seamless loop before JS clone -->
+          <div class="skill-item"><img src="img/Html-1.svg.png" alt="" class="skill-icon"><span class="skill-name">HTML5</span></div>
+          <div class="skill-item"><img src="img/CSS3_logo.svg.png" alt="" class="skill-icon"><span class="skill-name">CSS3</span></div>
+          <div class="skill-item"><img src="img/Javascript_Logo.png" alt="" class="skill-icon"><span class="skill-name">JavaScript</span></div>
+          <div class="skill-item"><img src="img/Tailwind_CSS_Logo.svg.png" alt="" class="skill-icon"><span class="skill-name">Tailwind</span></div>
+          <div class="skill-item"><img src="img/Bootstrap_logo.svg.png" alt="" class="skill-icon"><span class="skill-name">Bootstrap</span></div>
+          <div class="skill-item"><img src="img/Electron_Software_Framework_Logo.svg.png" alt="" class="skill-icon"><span class="skill-name">Electron.js</span></div>
+          <div class="skill-item"><img src="img/PHP-logo.svg.png" alt="" class="skill-icon"><span class="skill-name">PHP</span></div>
+          <div class="skill-item"><img src="img/Antu_mysql-workbench.svg.png" alt="" class="skill-icon"><span class="skill-name">MySQL</span></div>
+          <div class="skill-item"><img src="img/WordPress_blue_logo.svg.png" alt="" class="skill-icon"><span class="skill-name">WordPress</span></div>
+          <div class="skill-item"><img src="img/Figma-logo.svg.png" alt="" class="skill-icon"><span class="skill-name">Figma</span></div>
+          <div class="skill-item"><img src="img/Git_icon.svg.png" alt="" class="skill-icon"><span class="skill-name">Git</span></div>
+          <div class="skill-item"><img src="img/GitHub_Invertocat_Logo_invert.svg.png" alt="" srcset=""class="skill-icon"><span class="skill-name">GitHub</span></div>
+
+        </div><!-- /skills-track -->
+      </div><!-- /skills-runner -->
+    </div><!-- /skills-strip-wrap -->
+  </section>
+
+  <!-- ── BACKGROUND ─────────────────────────────────────────────── -->
+  <section id="background">
+    <div class="container">
+      <p class="section-label reveal">The Journey</p>
+      <h2 class="section-title reveal reveal-delay-1">Languages, Education<br>&amp; Experience</h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+
+      <div class="background-grid">
+
+        <!-- Languages -->
+        <div class="bg-panel reveal reveal-delay-1">
+          <p class="bg-panel-label">Languages</p>
+
+          <div class="lang-item">
+            <div class="lang-row">
+              <span class="lang-name">Arabic</span>
+              <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-bar"></div>
+          </div>
+
+          <div class="lang-item">
+            <div class="lang-row">
+              <span class="lang-name">English</span>
+              <span class="lang-level">A2-B1</span>
+            </div>
+            <div class="lang-bar"></div>
+          </div>
+
+          <div class="lang-item">
+            <div class="lang-row">
+              <span class="lang-name">French</span>
+              <span class="lang-level">A1</span>
+            </div>
+            <div class="lang-bar"></div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="bg-panel reveal reveal-delay-2">
+          <p class="bg-panel-label">Education</p>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2025 — Present</div>
+            <div class="timeline-title">Web Development</div>
+            <div class="timeline-sub">Solicode(ofppt) - Tangier</div>
+          </div>
+
+
+
+          <div class="timeline-item">
+            <div class="timeline-year">2024 — 2025</div>
+            <div class="timeline-title">Baccalaureat Sc SVT</div>
+            <div class="timeline-sub">bac libre</div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ───────────────────────────────────────────────── -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label reveal">Selected Work</p>
+      <h2 class="section-title reveal reveal-delay-1">Projects &amp; Builds</h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+
+      <div class="projects-grid">
+
+        <article class="project-card reveal reveal-delay-1" data-id="1" role="button" tabindex="0" aria-label="Open NebulaChat project">
+          <div class="project-preview">
+            <div class="project-preview-inner">
+              <img src="img/figmasolicodeblog.png" alt="figmasolicodeblog.png" class="project-preview-img">
+            </div>
+            <div class="project-preview-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-num">01</div>
+            <h3 class="project-title">ui Solicode blog</h3>
+            <p class="project-desc">SoliCode Tangier Mini Description: Bridging the digital divide through tech education and social solidarity.</p>
+            <div class="project-arrow">View Project <span>→</span></div>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-2" data-id="2" role="button" tabindex="0" aria-label="Open OrbisShop project">
+          <div class="project-preview">
+            <div class="project-preview-inner">
+              <img src="img/catalog.png" alt="OrbisShop preview" class="project-preview-img">
+            </div>
+            <div class="project-preview-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-num">02</div>
+            <h3 class="project-title">Dynamic Product Catalog</h3>
+            <p class="project-desc">A responsive e-commerce storefront featuring real-time API integration, smart filtering, and a sleek dark-mode UI for modern retail.</p>
+            <div class="project-arrow">View Project <span>→</span></div>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-3" data-id="3" role="button" tabindex="0" aria-label="Open PulseUI Kit project">
+          <div class="project-preview">
+            <div class="project-preview-inner">
+              <img src="img/library.png"  class="project-preview-img">
+            </div>
+            <div class="project-preview-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-num">03</div>
+            <h3 class="project-title">The Cursed Librar</h3>
+            <p class="project-desc">A haunted digital archive of forbidden knowledge, featuring a Grimdark UI and spectral tracking for artifacts that shouldn't exist.</p>
+            <div class="project-arrow">View Project <span>→</span></div>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-1" data-id="4" role="button" tabindex="0" aria-label="Open VoidTrack project">
+          <div class="project-preview">
+            <div class="project-preview-inner">
+              <img src="img/crud.png" alt="VoidTrack preview" class="project-preview-img">
+            </div>
+            <div class="project-preview-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-num">04</div>
+            <h3 class="project-title"> Recipes List crud</h3>
+            <p class="project-desc">Offline-first productivity PWA with dark-only interface for deep work.</p>
+            <div class="project-arrow">View Project <span>→</span></div>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-2" data-id="5" role="button" tabindex="0" aria-label="Open AetherCMS project">
+          <div class="project-preview">
+            <div class="project-preview-inner">
+              <img src="img/meteo.png" alt="AetherCMS preview" class="project-preview-img">
+            </div>
+            <div class="project-preview-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-num">05</div>
+            <h3 class="project-title">meteo app</h3>
+            <p class="project-desc">A minimalist, real-time weather application featuring a sleek glassmorphism design and dynamic background synchronization.</p>
+            <div class="project-arrow">View Project <span>→</span></div>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-3" data-id="6" role="button" tabindex="0" aria-label="Open StarMapper project">
+          <div class="project-preview">
+            <div class="project-preview-inner">
+              <img src="img/ConsultationsList.png" alt="StarMapper preview" class="project-preview-img">
+            </div>
+            <div class="project-preview-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-num">06</div>
+            <h3 class="project-title">Consultations List</h3>
+            <p class="project-desc">A sleek, full-stack management interface designed for healthcare providers to track patient vitals, manage consultation lists, and receive real-time diagnostic alerts based on clinical data.</p>
+            <div class="project-arrow">View Project <span>→</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ─────────────────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <p class="section-label reveal">Say Hello</p>
+        <h2 class="section-title reveal reveal-delay-1">
+          Let's build something<br>remarkable together.
+        </h2>
+        <div class="section-divider reveal reveal-delay-2" style="margin: 0 auto 32px"></div>
+
+        <p class="reveal reveal-delay-2" style="color:var(--text-dim); max-width:420px; margin: 0 auto 40px">
+          Open to freelance projects, full-time roles, and ambitious collaborations.
+          Reach out — the universe is vast but my inbox is open.
+        </p>
+
+        <!-- Contact Form -->
+        <form id="contact-form" class="contact-form reveal reveal-delay-3" action="https://formspree.io/f/xyzgwjrn" method="POST">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              class="form-input" 
+              placeholder="Your name"
+              required
+            >
+            <span class="form-error" id="name-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="your@email.com"
+              required
+            >
+            <span class="form-error" id="email-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input 
+              type="text" 
+              id="subject" 
+              name="subject" 
+              class="form-input" 
+              placeholder="What's this about?"
+              required
+            >
+            <span class="form-error" id="subject-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              class="form-input form-textarea" 
+              placeholder="Tell me about your project..."
+              rows="6"
+              required
+            ></textarea>
+            <span class="form-error" id="message-error"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="submit-btn">
+            Send Message
+          </button>
+          <span class="form-success" id="success-message"></span>
+        </form>
+
+        <!-- Email Link Alternative -->
+        <p style="color:var(--text-dim); margin-top: 32px; font-size: 0.9rem">
+          Or directly: 
+          <span class="contact-email">
+            alaemaghchich2004@gmail.com <br> or <br> 0655454642
+          </span>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
+  <footer>
+    <p class="footer-copy">© 2026 alae maghchich</p>
+    <div class="footer-status">
+      <div class="status-dot"></div>
+      Available for projects
+              <div class="social-links reveal reveal-delay-4">
+          <a href="https://github.com/alaemaghchich" class="social-link" aria-label="GitHub" title="GitHub">
+            <!-- GitHub SVG icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.79 1.3 3.47.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://ma.linkedin.com/in/alae-maghchich-338a4239a" class="social-link" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+            </svg>
+          </a>
+          <a href="https://x.com/AlaeMaghch34144" class="social-link" aria-label="Twitter / X" title="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.24 2h3.12l-6.81 7.79L22.5 22h-6.27l-4.91-6.42L5.5 22H2.38l7.29-8.33L1.5 2h6.43l4.43 5.87L18.24 2zm-1.1 18h1.73L6.97 3.73H5.12L17.14 20z"/>
+            </svg>
+          </a>
+        </div>
+    </div>
+  </footer>
+
+  <!-- ── PROJECT MODAL ──────────────────────────────────────────── -->
+  <div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Project details">
+    <div id="project-modal">
+      <button id="modal-close" aria-label="Close modal">✕</button>
+
+      <div class="modal-preview">
+        <img class="modal-preview-image" src="img/image.png" alt="Project screenshot">
+      </div>
+
+      <div class="modal-body">
+        <h2 class="modal-title">Project Title</h2>
+        <p class="modal-desc">Project description goes here.</p>
+
+        <div class="modal-tech">
+          <!-- Filled by JS -->
+        </div>
+
+        <div class="modal-links">
+          <a href="#" class="btn btn-primary modal-live" target="_blank" rel="noopener">
+            Live Demo ↗
+          </a>
+          <a href="#" class="btn btn-ghost modal-github" target="_blank" rel="noopener">
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

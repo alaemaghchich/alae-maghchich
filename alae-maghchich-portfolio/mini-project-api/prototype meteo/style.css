@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap');
+
+* {
+  font-family: "Playwrite US Modern", cursive;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  min-height: 100vh;
+  color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.container {
+  position: relative;
+  width: 400px;
+  height: 540px;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 0 10px rgb(0, 128, 255),
+    0 0 20px rgb(0, 128, 255),
+    0 0 30px rgb(0, 128, 255);
+}
+.search {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.search i {
+  position: absolute;
+  left: 10px;
+  font-size: 22px;
+  color: #fff;
+}
+
+.search input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0 42px 0 48px;
+  color: white;
+}
+
+.search input::placeholder {
+  text-transform: capitalize;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search button {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 28px;
+  color: aliceblue;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.search button:hover {
+  color: rgb(0, 200, 255);
+  transform: scale(1.1);
+}
+
+.wetherbox {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.wetherbox img {
+  width: 60%;
+  filter: drop-shadow(0 0 10px rgba(0, 128, 255, 0.6));
+}
+
+.wetherbox .temp {
+  position: relative;
+  font-size: 65px;
+  line-height: 1;
+  font-weight: 700;
+  margin: 20px 0 6px -30px;
+}
+
+.wetherbox .temp span {
+  position: absolute;
+  font-size: 25px;
+  margin-left: 5px;
+}
+
+.wetherbox .description {
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.details {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details .humi,
+.details .wind {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.details i {
+  font-size: 45px;
+  margin-right: 10px;
+  color: #00aaff;
+  filter: drop-shadow(0 0 8px #00aaff);
+}
+
+.details span {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.details p {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
