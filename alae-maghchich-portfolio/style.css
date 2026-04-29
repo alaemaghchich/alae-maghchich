@@ -118,13 +118,83 @@ img { max-width: 100%; display: block; }
 #main-nav.scrolled {
   background: rgba(5, 6, 15, 0.85);
   backdrop-filter: blur(20px);
-  padding: 1px 15px;
+  padding: 14px 48px;
   border-bottom: 1px solid var(--border);
 }
 
-.nav-logo { 
-  height: 65px;
-  border-radius: 50px;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap');
+
+.nav-logo {
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(90deg, #e8e8f0 0%, #7eb8f7 18%, #a78bfa 36%, #f472b6 54%, #34d399 72%, #e8e8f0 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 5s linear infinite, infinityFloat 4s ease-in-out infinite;
+}
+
+.nav-logo::before,
+.nav-logo::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  background: inherit;
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-logo::before {
+  clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
+  animation: glitchTop 3.5s infinite step-start, gradientShift 5s linear infinite;
+}
+
+.nav-logo::after {
+  clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
+  animation: glitchBot 3.5s infinite step-start, gradientShift 5s linear infinite reverse;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+@keyframes infinityFloat {
+  0%   { transform: translate(0,0); }
+  15%  { transform: translate(7px,-5px); }
+  30%  { transform: translate(11px,0); }
+  45%  { transform: translate(7px,5px); }
+  50%  { transform: translate(0,6px); }
+  65%  { transform: translate(-7px,5px); }
+  80%  { transform: translate(-11px,0); }
+  90%  { transform: translate(-7px,-5px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes glitchTop {
+  0%,89% { transform:none; opacity:0; }
+  90%    { transform:translate(-4px,-2px); opacity:.85; }
+  91%    { transform:translate(4px,2px); opacity:.6; }
+  92%    { transform:translate(-2px,0); opacity:.75; }
+  93%    { transform:none; opacity:0; }
+  95%    { transform:translate(6px,-1px) skewX(-6deg); opacity:.7; }
+  96%    { transform:none; opacity:0; }
+}
+
+@keyframes glitchBot {
+  0%,91% { transform:none; opacity:0; }
+  92%    { transform:translate(5px,3px) skewX(4deg); opacity:.8; }
+  93%    { transform:translate(-4px,-1px); opacity:.5; }
+  94%    { transform:translate(2px,2px); opacity:.7; }
+  95%    { transform:none; opacity:0; }
+  97%    { transform:translate(-6px,0) skewX(-4deg); opacity:.65; }
+  98%    { transform:none; opacity:0; }
 }
 
 
@@ -981,7 +1051,17 @@ section {
 .form-success.show {
   opacity: 1;
 }
+#success-message {
+  margin-top: 12px;
+  color: #00ffcc;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
+#success-message.show {
+  opacity: 1;
+}
 #submit-btn {
   margin-top: 16px;
   align-self: center;

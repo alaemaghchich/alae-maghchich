@@ -82,7 +82,6 @@ const SkillStrip = (() => {
     const track = document.querySelector('.skills-track');
     if (!track) return;
 
-    // Clone for seamless loop
     const clone = track.cloneNode(true);
     clone.setAttribute('aria-hidden', 'true');
     track.parentNode.appendChild(clone);
@@ -110,7 +109,6 @@ const CustomCursor = (() => {
       cursor.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
     });
 
-    // Hover effect on interactive elements
     document.querySelectorAll('a, button, .project-card, .skill-item').forEach(el => {
       el.addEventListener('mouseenter', () => follower.classList.add('expanded'));
       el.addEventListener('mouseleave', () => follower.classList.remove('expanded'));
@@ -196,10 +194,10 @@ const ProjectModal = (() => {
     },
     {
       id: 4,
-      title: " Recipes List crud",
+      title: "Recipes List crud",
       description: "Productivity & habit tracker with offline-first PWA architecture.",
       full: "VoidTrack is a minimalist productivity app that works entirely offline. Built as a PWA, it syncs when online and uses IndexedDB for local persistence. Dark-only interface designed to reduce eye strain during deep work sessions.",
-      tech: ["PHP","MYSQL", "CSS3", "HTML5", "BOOTSTRAP"],
+      tech: ["PHP", "MYSQL", "CSS3", "HTML5", "BOOTSTRAP"],
       preview: "linear-gradient(135deg, #001a0a, #0a3020)",
       image: "img/crud.png",
       links: { live: "#", github: "https://github.com/alaemaghchich/php/tree/0beed1fabe48f2cca8187d5c7bfbd247af78c2cf/pdo/V2/realisation_V2" }
@@ -298,7 +296,7 @@ const ProjectModal = (() => {
 ═══════════════════════════════════════════════════════════════════ */
 const MobileMenu = (() => {
   function init() {
-    const toggle  = document.getElementById('menu-toggle');
+    const toggle    = document.getElementById('menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
 
     toggle?.addEventListener('click', () => {
@@ -327,7 +325,7 @@ const GlowOrb = (() => {
 
     document.addEventListener('mousemove', e => {
       const rx = (e.clientY / window.innerHeight - 0.5) * 20;
-      const ry = (e.clientX / window.innerWidth - 0.5) * 20;
+      const ry = (e.clientX / window.innerWidth  - 0.5) * 20;
       orb.style.transform = `rotateX(${-rx}deg) rotateY(${ry}deg) scale(1)`;
     });
   }
@@ -337,11 +335,11 @@ const GlowOrb = (() => {
 
 /* ═══════════════════════════════════════════════════════════════════
    CONTACT FORM HANDLER
+   ✔ FIX 1 — كل المتغيرات داخل init() بدل برا
+   ✔ FIX 2 — fetch يرسل لـ '/' (Netlify) مع URLSearchParams
+   ✔ FIX 3 — Content-Type صحيح لـ Netlify Forms
 ═══════════════════════════════════════════════════════════════════ */
 const ContactForm = (() => {
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const successMsg = document.getElementById('success-message');
 
   const fieldRules = {
     name: {
@@ -363,98 +361,78 @@ const ContactForm = (() => {
   };
 
   function validateField(fieldName) {
-    const field = document.getElementById(fieldName);
+    const field   = document.getElementById(fieldName);
     const errorEl = document.getElementById(`${fieldName}-error`);
-    
-    if (!field) return true;
+    if (!field || !errorEl) return true;
 
-    const rule = fieldRules[fieldName];
-    const isValid = rule.validate(field.value);
-
-    if (!isValid) {
-      errorEl.textContent = rule.error;
-    } else {
-      errorEl.textContent = '';
-    }
-
+    const isValid = fieldRules[fieldName].validate(field.value);
+    errorEl.textContent = isValid ? '' : fieldRules[fieldName].error;
     return isValid;
   }
 
   function validateForm() {
-    return Object.keys(fieldRules).every(fieldName => validateField(fieldName));
+    return Object.keys(fieldRules).every(f => validateField(f));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!validateForm()) return;
 
-    if (!validateForm()) {
-      return;
-    }
+    // ✔ FIX: grab elements here, inside the function, after DOM is ready
+    const form       = document.getElementById('contact-form');
+    const submitBtn  = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('success-message');
 
-    // Show loading state
-    submitBtn.disabled = true;
+    submitBtn.disabled    = true;
     submitBtn.textContent = 'Sending...';
 
-    // Submit the form via Formspree
-    const formData = new FormData(form);
-    
-    fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
+    // ✔ FIX: URLSearchParams for Netlify + correct Content-Type
+    fetch('/', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body:    new URLSearchParams(new FormData(form)).toString()
     })
     .then(response => {
-      if (response.ok) {
-        // Reset form
-        form.reset();
-        
-        // Show success message
-        successMsg.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
-        successMsg.classList.add('show');
-        
-        // Reset button
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
+      if (!response.ok) throw new Error('Network response was not ok');
 
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-          successMsg.classList.remove('show');
-          successMsg.textContent = '';
-        }, 5000);
-      } else {
-        throw new Error('Form submission failed');
-      }
+      form.reset();
+      successMsg.style.color   = '';
+      successMsg.textContent   = "✓ Message sent successfully! I'll get back to you soon.";
+      successMsg.classList.add('show');
+      submitBtn.disabled       = false;
+      submitBtn.textContent    = 'Send Message';
+
+      setTimeout(() => {
+        successMsg.classList.remove('show');
+        successMsg.textContent = '';
+      }, 5000);
     })
-    .catch(error => {
-      console.error('Error:', error);
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-      successMsg.textContent = '✗ Something went wrong. Please try again.';
-      successMsg.style.color = '#ff5af0';
+    .catch(err => {
+      console.error('Form error:', err);
+      submitBtn.disabled       = false;
+      submitBtn.textContent    = 'Send Message';
+      successMsg.style.color   = '#ff5af0';
+      successMsg.textContent   = '✗ Something went wrong. Please try again.';
       successMsg.classList.add('show');
     });
   }
 
   function init() {
+    const form = document.getElementById('contact-form');
     if (!form) return;
 
-    // Add real-time validation
+    // Real-time validation
     Object.keys(fieldRules).forEach(fieldName => {
       const field = document.getElementById(fieldName);
-      if (field) {
-        field.addEventListener('blur', () => validateField(fieldName));
-        field.addEventListener('input', () => {
-          const errorEl = document.getElementById(`${fieldName}-error`);
-          if (errorEl.textContent) {
-            validateField(fieldName);
-          }
-        });
-      }
+      if (!field) return;
+
+      field.addEventListener('blur', () => validateField(fieldName));
+      field.addEventListener('input', () => {
+        const errorEl = document.getElementById(`${fieldName}-error`);
+        if (errorEl && errorEl.textContent) validateField(fieldName);
+      });
     });
 
-    // Form submission
     form.addEventListener('submit', handleSubmit);
   }
 
