@@ -221,6 +221,16 @@ const ProjectModal = (() => {
       preview: "linear-gradient(135deg, #000820, #0d1f5c)",
       image: "img/ConsultationsList.png",
       links: { live: "#", github: "https://github.com/alaemaghchich/php/tree/0beed1fabe48f2cca8187d5c7bfbd247af78c2cf/Bases%20et%20logique%20PHP/prototype%20%26%20realissation/rezalisation%202" }
+    },
+    {
+      id: 7,
+      title: "Coiffeur Élite — Application Web",
+      description: "A premium full-stack salon booking platform built with PHP & MySQL, featuring secure PDO-driven scheduling.",
+      full: "Coiffeur Élite is a premium salon booking application featuring a responsive modal interface with a floating close button. Built with PHP and MySQL using PDO prepared statements for security, the system allows clients to book appointments, select services and staff, check real-time availability, and manage reservations efficiently.",
+      tech: ["PHP", "MySQL", "PDO", "HTML5", "CSS3", "JavaScript"],
+      preview: "linear-gradient(135deg, #8b4b7a, #d4a5d4)",
+      image: "img/img1.png",
+      links: { live: "coiffeur-elite/index.php", github: "https://github.com" }
     }
   ];
 
